@@ -22,6 +22,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { ApiAlert } from "@/components/ui/api-alert";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 type SettingsFormProps = {
@@ -133,6 +134,13 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+
+      <Separator />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        description="Test Desc"
+        variant="public"
+      />
     </>
   );
 };
