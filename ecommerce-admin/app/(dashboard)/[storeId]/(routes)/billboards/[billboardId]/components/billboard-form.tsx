@@ -10,7 +10,6 @@ import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Trash } from "lucide-react";
 
-import { useOrigin } from "@/hooks/use-origin";
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -43,7 +42,6 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
 
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const title = initialData ? "Edit billboard" : "Create billboard";
   const description = initialData ? "Edit a billboard" : "Add a new billboard";
