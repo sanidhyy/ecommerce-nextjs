@@ -1,7 +1,7 @@
 import prismadb from "@/lib/prismadb";
 import { format } from "date-fns";
 
-import { CategoryClient } from "./components/billboard-client";
+import { CategoryClient } from "./components/category-client";
 import { CategoryColumn } from "./components/columns";
 
 const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
