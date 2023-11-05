@@ -28,9 +28,9 @@ export const columns: ColumnDef<ProductColumn>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-x-2">
         {row.original.isArchived ? (
-          <CheckCircle className="h-4 w-4" />
+          <CheckCircle className="h-4 w-4 mx-4" />
         ) : (
-          <XCircle className="h-4 w-4" />
+          <XCircle className="h-4 w-4 mx-4" />
         )}
       </div>
     ),
@@ -42,9 +42,9 @@ export const columns: ColumnDef<ProductColumn>[] = [
       <div className="flex items-center gap-x-2">
         <div className="flex items-center gap-x-2">
           {row.original.isFeatured ? (
-            <CheckCircle className="h-4 w-4" />
+            <CheckCircle className="h-4 w-4 mx-4" />
           ) : (
-            <XCircle className="h-4 w-4" />
+            <XCircle className="h-4 w-4 mx-4" />
           )}
         </div>
       </div>
