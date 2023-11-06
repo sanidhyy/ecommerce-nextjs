@@ -6,7 +6,6 @@ import useCart from "@/hooks/use-cart";
 import Container from "@/components/ui/container";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
-import Loading from "./components/loading";
 
 const CartPage = () => {
   const cart = useCart();
@@ -16,7 +15,7 @@ const CartPage = () => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return <Loading />;
+  if (!isMounted) return null;
   return (
     <div className="bg-white">
       <Container>
