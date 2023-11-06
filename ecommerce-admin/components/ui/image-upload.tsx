@@ -44,6 +44,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               <Button
                 type="button"
                 onClick={() => onRemove(url)}
+                disabled={disabled}
                 variant="destructive"
                 size="icon"
               >
