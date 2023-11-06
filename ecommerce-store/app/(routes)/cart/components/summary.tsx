@@ -32,7 +32,7 @@ const Summary = () => {
 
   const onCheckout = async () => {
     setLoading(true);
-    toast.loading("Redirecting...", { id: "checkout-loading" });
+    toast.loading("Redirecting to checkout...", { id: "checkout-loading" });
 
     await axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
