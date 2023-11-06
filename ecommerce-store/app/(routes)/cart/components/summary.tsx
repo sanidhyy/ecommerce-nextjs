@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -10,6 +10,7 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 
 const Summary = () => {
+  const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
@@ -30,14 +31,23 @@ const Summary = () => {
   }, 0);
 
   const onCheckout = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      {
-        productIds: items.map((item) => item.id),
-      }
-    );
+    setLoading(true);
+    toast.loading("Redirecting...", { id: "checkout-loading" });
 
-    window.location = response.data.url;
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+        productIds: items.map((item) => item.id),
+      })
+      .then((response) => {
+        window.location = response.data.url;
+      })
+      .catch((error: any) => {
+        toast.error("Something went wrong during checkout.", {
+          id: "checkout-loading",
+        });
+        console.log("Error occured during checkout: ", error);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -52,7 +62,11 @@ const Summary = () => {
         </div>
       </div>
 
-      <Button onClick={onCheckout} className="w-full mt-6">
+      <Button
+        disabled={items.length === 0 || loading === true}
+        onClick={onCheckout}
+        className="w-full mt-6"
+      >
         Checkout
       </Button>
     </div>
