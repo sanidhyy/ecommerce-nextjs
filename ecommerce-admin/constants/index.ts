@@ -5,6 +5,41 @@ import { Metadata } from "next";
 
 export const SITE_NAME = "Store" as const;
 
+export const SIDEBAR_LINKS = [
+  {
+    to: "",
+    label: "Overview",
+  },
+  {
+    to: "billboards",
+    label: "Billboards",
+  },
+  {
+    to: "categories",
+    label: "Categories",
+  },
+  {
+    to: "sizes",
+    label: "Sizes",
+  },
+  {
+    to: "colors",
+    label: "Colors",
+  },
+  {
+    to: "products",
+    label: "Products",
+  },
+  {
+    to: "orders",
+    label: "Orders",
+  },
+  {
+    to: "settings",
+    label: "Settings",
+  },
+] as const;
+
 export const EXTRA_LINKS = {
   github: "https://github.com/sanidhyy",
   source_code: "https://github.com/sanidhyy/ecommerce-nextjs",
