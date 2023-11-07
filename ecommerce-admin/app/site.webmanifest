@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Store",
-  "short_name": "Store",
-  "description": "A Next.js 14 E-Commerce Store.",
+  "name": "Store Admin Dashboard",
+  "short_name": "Store Admin",
+  "description": "A Next.js 14 E-Commerce dashboard & CMS.",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
