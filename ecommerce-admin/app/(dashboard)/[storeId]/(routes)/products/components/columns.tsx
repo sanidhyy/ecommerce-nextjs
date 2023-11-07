@@ -1,9 +1,17 @@
 "use client";
 
+import { toast } from "react-hot-toast";
 import { ColumnDef } from "@tanstack/react-table";
 import { CheckCircle, XCircle } from "lucide-react";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { CellAction } from "./cell-action";
+import { MouseEventHandler } from "react";
 
 export type ProductColumn = {
   id: string;
@@ -65,16 +73,35 @@ export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "color",
     header: "Color",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-x-2">
-        {row.original.color}
+    cell: ({ row }) => {
+      const colorName = row.original.color.split(" ")[0];
+      const colorValue = row.original.color.split(" ")[1];
 
-        <div
-          className="h-6 w-6 rounded-full border"
-          style={{ backgroundColor: row.original.color }}
-        />
-      </div>
-    ),
+      const onCopy = (color: string) => {
+        navigator.clipboard.writeText(color);
+        toast.success("Hex code copied to the clipboard.");
+      };
+
+      return (
+        <div className="flex items-center gap-x-2">
+          {colorName}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <div
+                  className="h-6 w-6 rounded-full border"
+                  style={{ backgroundColor: colorValue }}
+                  onClick={() => onCopy(colorValue)}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{colorValue}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "createdAt",
