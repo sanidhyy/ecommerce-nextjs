@@ -5,6 +5,7 @@ import MainNav from "@/components/main-nav";
 import NavbarActions from "@/components/navbar-actions";
 import getCategories from "@/actions/get-categories";
 import { ShoppingCart } from "lucide-react";
+import { SITE_NAME } from "@/constants";
 
 const Navbar = async () => {
   const categories = await getCategories();
@@ -15,7 +16,7 @@ const Navbar = async () => {
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
           <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
             <ShoppingCart size={20} />
-            <p className="font-bold text-xl">STORE</p>
+            <p className="font-bold text-xl uppercase">{SITE_NAME}</p>
           </Link>
 
           <MainNav data={categories} />
