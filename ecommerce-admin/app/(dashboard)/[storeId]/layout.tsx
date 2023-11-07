@@ -1,8 +1,16 @@
-import prismadb from "@/lib/prismadb";
+import type { Metadata, Viewport } from "next";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import Navbar from "@/components/navbar";
+import prismadb from "@/lib/prismadb";
+import { generateMetadata } from "@/lib/utils";
+
+export const metadata: Metadata = generateMetadata();
+
+export const viewport: Viewport = {
+  themeColor: "#111111",
+};
 
 export default async function DashboardLayout({
   children,

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -7,12 +7,14 @@ import { ToasterProvider } from "@/providers/toast-provider";
 
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { generateMetadata } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Store | Admin Dashboard",
-  description: "A Next.js 14 E-Commerce dashboard & CMS.",
+export const metadata: Metadata = generateMetadata();
+
+export const viewport: Viewport = {
+  themeColor: "#111111",
 };
 
 export default function RootLayout({
