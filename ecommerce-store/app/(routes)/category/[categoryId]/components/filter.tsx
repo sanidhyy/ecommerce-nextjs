@@ -35,6 +35,7 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
       {
         url: window.location.href,
         query,
+        fragmentIdentifier: "products",
       },
       { skipNull: true }
     );
