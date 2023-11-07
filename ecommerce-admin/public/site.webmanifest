@@ -1,0 +1,28 @@
+{
+  "theme_color": "#111111",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Store Admin Dashboard",
+  "short_name": "Store Admin",
+  "description": "A Next.js 14 E-Commerce dashboard & CMS.",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable.png",
+      "sizes": "1024x1024",
+      "type": "image/x-icon",
+      "purpose": "maskable"
+    }
+  ]
+}
