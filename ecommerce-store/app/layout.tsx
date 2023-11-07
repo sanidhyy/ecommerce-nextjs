@@ -32,7 +32,7 @@ export default function RootLayout({
           name="msapplication-TileImage"
           content="icons/mstile-144x144.png"
         />
-        <meta name="msapplication-config" content="icons/browserconfig.xml" />
+        <meta name="msapplication-config" content="browserconfig.xml" />
       </head>
       <body className={urbanist.className}>
         <ModalProvider />

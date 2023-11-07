@@ -23,6 +23,18 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          <link
+            rel="mask-icon"
+            href="icons/safari-pinned-tab.svg"
+            color="#111111"
+          />
+          <meta
+            name="msapplication-TileImage"
+            content="icons/mstile-144x144.png"
+          />
+          <meta name="msapplication-config" content="browserconfig.xml" />
+        </head>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
