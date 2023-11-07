@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 import prismadb from "@/lib/prismadb";
 import { generateMetadata } from "@/lib/utils";
 
-export const metadata: Metadata = generateMetadata();
+export const metadata: Metadata = generateMetadata("Admin Dashboard");
 
 export const viewport: Viewport = {
   themeColor: "#111111",
