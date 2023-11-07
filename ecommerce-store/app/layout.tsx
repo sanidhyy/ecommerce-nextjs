@@ -5,15 +5,13 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
+import { SITE_DATA } from "@/constants";
 
 import "./globals.css";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Store",
-  description: "A Next.js 14 E-Commerce Store.",
-};
+export const metadata: Metadata = SITE_DATA;
 
 export default function RootLayout({
   children,
