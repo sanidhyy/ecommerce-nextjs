@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckCircle, XCircle } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
 
 export type OrderColumn = {
@@ -20,10 +21,24 @@ export const columns: ColumnDef<OrderColumn>[] = [
   {
     accessorKey: "phone",
     header: "Phone",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2">
+          {row.original.isPaid ? row.original.phone : "N/A"}
+        </div>
+      </div>
+    ),
   },
   {
     accessorKey: "address",
     header: "Address",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2">
+          {row.original.isPaid ? row.original.address : "N/A"}
+        </div>
+      </div>
+    ),
   },
   {
     accessorKey: "totalPrice",
@@ -32,6 +47,17 @@ export const columns: ColumnDef<OrderColumn>[] = [
   {
     accessorKey: "isPaid",
     header: "Paid",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2">
+          {row.original.isPaid ? (
+            <CheckCircle className="h-4 w-4 mx-1" />
+          ) : (
+            <XCircle className="h-4 w-4 mx-1" />
+          )}
+        </div>
+      </div>
+    ),
   },
   {
     accessorKey: "createdAt",
