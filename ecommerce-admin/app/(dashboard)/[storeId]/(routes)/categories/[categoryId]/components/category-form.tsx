@@ -131,6 +131,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
             onClick={() => {
               setOpen(true);
             }}
+            title={`Delete ${initialData.name} category`}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -156,6 +157,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
                       disabled={loading}
                       placeholder="Category Name"
                       {...field}
+                      title="Category name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -175,18 +177,23 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
                     value={field.value}
                     defaultValue={field.value}
                   >
-                    <FormControl>
+                    <FormControl title="Select a billboard">
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
                           placeholder="Select a billboard"
+                          title="Select a billboard"
                         />
                       </SelectTrigger>
                     </FormControl>
 
                     <SelectContent>
                       {billboards.map((billboard) => (
-                        <SelectItem key={billboard.id} value={billboard.id}>
+                        <SelectItem
+                          key={billboard.id}
+                          value={billboard.id}
+                          title={billboard.label}
+                        >
                           {billboard.label}
                         </SelectItem>
                       ))}
@@ -198,7 +205,12 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button
+            disabled={loading}
+            className="ml-auto"
+            type="submit"
+            title={action}
+          >
             {action}
           </Button>
         </form>

@@ -119,6 +119,7 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
             onClick={() => {
               setOpen(true);
             }}
+            title={`Delete ${initialData.name} color`}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -144,6 +145,7 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
                       disabled={loading}
                       placeholder="Color name"
                       {...field}
+                      title="Color name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -162,11 +164,13 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
                       <Input
                         disabled={loading}
                         placeholder="Color value"
+                        title="Color value"
                         {...field}
                       />
                       <div
                         className="border p-4 rounded-full"
                         style={{ backgroundColor: field.value }}
+                        title="Color preview"
                       />
                     </div>
                   </FormControl>
@@ -176,7 +180,12 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button
+            disabled={loading}
+            className="ml-auto"
+            type="submit"
+            title={action}
+          >
             {action}
           </Button>
         </form>

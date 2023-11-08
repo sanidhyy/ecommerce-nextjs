@@ -70,6 +70,7 @@ export default function StoreSwitcher({
           aria-expanded={open}
           aria-label="Select a store"
           className={cn("w-[200px] justify-between", className)}
+          title="Select a store"
         >
           <StoreIcon className="mr-2 h-4 w-4" />
           {currentStore?.label}
@@ -80,7 +81,10 @@ export default function StoreSwitcher({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store..." />
+            <CommandInput
+              placeholder="Search store..."
+              title="Search store..."
+            />
             <CommandEmpty>No store found.</CommandEmpty>
             <CommandGroup heading="Stores">
               {formattedItems.map((store) => (
@@ -88,6 +92,7 @@ export default function StoreSwitcher({
                   key={store.value}
                   onSelect={() => onStoreSelect(store)}
                   className="text-sm"
+                  title={store.label}
                 >
                   <StoreIcon className="mr-2 h-4 w-4" />
                   {store.label}
@@ -112,6 +117,7 @@ export default function StoreSwitcher({
                   setOpen(false);
                   storeModal.onOpen();
                 }}
+                title="Create Store"
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
                 Create Store

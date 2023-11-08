@@ -6,10 +6,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { SIDEBAR_LINKS } from "@/constants";
 
-export function MainNav({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) {
+export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
   const params = useParams();
 
@@ -25,6 +22,7 @@ export function MainNav({
               ? "text-black dark:text-white"
               : "text-muted-foreground"
           )}
+          title={route.label}
         >
           {route.label}
         </Link>

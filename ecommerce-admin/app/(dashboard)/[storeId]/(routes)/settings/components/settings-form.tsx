@@ -99,6 +99,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           onClick={() => {
             setOpen(true);
           }}
+          title={`Delete ${initialData.name}`}
         >
           <Trash className="h-4 w-4" />
         </Button>
@@ -131,8 +132,13 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
-            Save changed
+          <Button
+            disabled={loading}
+            className="ml-auto"
+            type="submit"
+            title="Save changes"
+          >
+            Save changes
           </Button>
         </form>
       </Form>

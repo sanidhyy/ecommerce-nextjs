@@ -26,7 +26,10 @@ export const SizesClient: React.FC<SizesClientProps> = ({ data }) => {
           description="Manage sizes for your store"
         />
 
-        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
+        <Button
+          onClick={() => router.push(`/${params.storeId}/sizes/new`)}
+          title="Add new size"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>

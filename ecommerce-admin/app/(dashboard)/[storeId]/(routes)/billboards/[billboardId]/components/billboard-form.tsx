@@ -121,6 +121,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
             onClick={() => {
               setOpen(true);
             }}
+            title={`Delete ${initialData.label} billboard`}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -164,6 +165,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
                       disabled={loading}
                       placeholder="Billboard label"
                       {...field}
+                      title="Billboard label"
                     />
                   </FormControl>
                   <FormMessage />
@@ -172,7 +174,12 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button
+            disabled={loading}
+            className="ml-auto"
+            type="submit"
+            title={action}
+          >
             {action}
           </Button>
         </form>

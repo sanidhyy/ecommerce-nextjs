@@ -155,6 +155,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             onClick={() => {
               setOpen(true);
             }}
+            title={`Delete ${initialData.name} product`}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -204,6 +205,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                       disabled={loading}
                       placeholder="Product label"
                       {...field}
+                      title="Product label"
                     />
                   </FormControl>
                   <FormMessage />
@@ -223,6 +225,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                       disabled={loading}
                       placeholder="9.99"
                       {...field}
+                      title="Product price"
                     />
                   </FormControl>
                   <FormMessage />
@@ -234,7 +237,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               control={form.control}
               name="categoryId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem title="Select a category">
                   <FormLabel>Category</FormLabel>
                   <Select
                     disabled={loading}
@@ -247,13 +250,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
                         <SelectValue
                           defaultValue={field.value}
                           placeholder="Select a category"
+                          title="Select a category"
                         />
                       </SelectTrigger>
                     </FormControl>
 
                     <SelectContent>
                       {categories.map((category) => (
-                        <SelectItem key={category.id} value={category.id}>
+                        <SelectItem
+                          key={category.id}
+                          value={category.id}
+                          title={category.name}
+                        >
                           {category.name}
                         </SelectItem>
                       ))}
@@ -268,7 +276,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               control={form.control}
               name="sizeId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem title="Select a size">
                   <FormLabel>Size</FormLabel>
                   <Select
                     disabled={loading}
@@ -281,13 +289,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
                         <SelectValue
                           defaultValue={field.value}
                           placeholder="Select a size"
+                          title="Select a size"
                         />
                       </SelectTrigger>
                     </FormControl>
 
                     <SelectContent>
                       {sizes.map((size) => (
-                        <SelectItem key={size.id} value={size.id}>
+                        <SelectItem
+                          key={size.id}
+                          value={size.id}
+                          title={size.name}
+                        >
                           {size.name}
                         </SelectItem>
                       ))}
@@ -302,7 +315,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               control={form.control}
               name="colorId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem title="Select a color">
                   <FormLabel>Color</FormLabel>
                   <Select
                     disabled={loading}
@@ -315,13 +328,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
                         <SelectValue
                           defaultValue={field.value}
                           placeholder="Select a color"
+                          title="Select a color"
                         />
                       </SelectTrigger>
                     </FormControl>
 
                     <SelectContent>
                       {colors.map((color) => (
-                        <SelectItem key={color.id} value={color.id}>
+                        <SelectItem
+                          key={color.id}
+                          value={color.id}
+                          title={color.name}
+                        >
                           {color.name}
                         </SelectItem>
                       ))}
@@ -341,6 +359,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      title="Featured"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -362,6 +381,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      title="Archived"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -375,7 +395,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button
+            disabled={loading}
+            className="ml-auto"
+            type="submit"
+            title={action}
+          >
             {action}
           </Button>
         </form>

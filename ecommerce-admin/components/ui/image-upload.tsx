@@ -47,6 +47,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 disabled={disabled}
                 variant="destructive"
                 size="icon"
+                title="Remove image"
               >
                 <Trash className="h-4 w-4" />
               </Button>
@@ -56,6 +57,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               fill
               className="object-cover"
               alt="Background Image"
+              title="Uploaded Image"
               src={url}
             />
           </div>
@@ -77,6 +79,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               disabled={disabled}
               variant="secondary"
               onClick={onClick}
+              title="Upload an image"
             >
               <ImagePlus className="h-4 w-4 mr-2" />
               Upload an Image

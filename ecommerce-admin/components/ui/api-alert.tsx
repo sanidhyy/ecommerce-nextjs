@@ -46,7 +46,12 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
           {description}
         </code>
 
-        <Button variant="outline" size="icon" onClick={onCopy}>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={onCopy}
+          title="Copy to clipboard"
+        >
           <Copy className="h-4 w-4" />
         </Button>
       </AlertDescription>

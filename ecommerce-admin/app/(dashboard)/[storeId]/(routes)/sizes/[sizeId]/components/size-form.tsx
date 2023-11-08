@@ -116,6 +116,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
             onClick={() => {
               setOpen(true);
             }}
+            title={`Delete ${initialData.name} size`}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -141,6 +142,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
                       disabled={loading}
                       placeholder="Size name"
                       {...field}
+                      title="Size name"
                     />
                   </FormControl>
                   <FormMessage />
@@ -159,6 +161,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
                       disabled={loading}
                       placeholder="Size value"
                       {...field}
+                      title="Size value"
                     />
                   </FormControl>
                   <FormMessage />
@@ -167,7 +170,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
             />
           </div>
 
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} className="ml-auto" type="submit" title={action}>
             {action}
           </Button>
         </form>
