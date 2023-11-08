@@ -44,12 +44,17 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           <div
             className="h-6 w-6 rounded-full border border-gray-600"
             style={{ backgroundColor: data?.color?.value }}
+            title={data?.color?.name}
           />
         </div>
       </div>
 
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2" onClick={onAddToCart}>
+        <Button
+          className="flex items-center gap-x-2"
+          onClick={onAddToCart}
+          title="Add to Cart"
+        >
           Add to Cart
           <ShoppingCart className="h-4 w-4" />
         </Button>

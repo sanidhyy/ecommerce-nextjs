@@ -40,6 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     <div
       onClick={handleClick}
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+      title={data?.name}
     >
       {/* images and actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -54,10 +55,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <IconButton
               onClick={onPreview}
               icon={<Expand size={20} className="text-gray-600" />}
+              title="View Preview"
             />
             <IconButton
               onClick={onAddToCart}
               icon={<ShoppingCart size={20} className="text-gray-600" />}
+              title="Add to Cart"
             />
           </div>
         </div>

@@ -30,6 +30,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                 src={image.url}
                 alt={`Active Image: ${image.url}`}
                 className="object-cover object-center"
+                title="Active Product Image"
               />
             </div>
           </Tab.Panel>
