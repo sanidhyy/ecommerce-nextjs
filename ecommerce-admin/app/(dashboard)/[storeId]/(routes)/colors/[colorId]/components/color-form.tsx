@@ -47,12 +47,12 @@ type ColorFormValues = z.infer<typeof formSchema>;
 // color form
 const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
   // navigation
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  // states
   const params = useParams();
   const router = useRouter();
+
+  // states
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // data
   const title = initialData ? "Edit color" : "Create color";
