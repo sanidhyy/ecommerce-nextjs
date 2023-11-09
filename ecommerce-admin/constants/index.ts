@@ -1,7 +1,7 @@
 // Contains constant data for using in website
 // ! Don't remove anything from here if not sure
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const SITE_NAME = "Store" as const;
 

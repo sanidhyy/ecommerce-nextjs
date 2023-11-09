@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs";
 
+// components
 import Navbar from "@/components/navbar";
+
+// utilities
 import prismadb from "@/lib/prismadb";
 import { generateMetadata } from "@/lib/utils";
 

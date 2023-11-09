@@ -1,5 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 
 import { SITE_DATA, SITE_NAME } from "@/constants";

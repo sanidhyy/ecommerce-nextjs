@@ -1,5 +1,5 @@
 import { generateMetadata } from "@/lib/utils";
-import { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 
 // export page metadata
 export const metadata: Metadata = generateMetadata("Authentication");
