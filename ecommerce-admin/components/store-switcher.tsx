@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import type { Store } from "@prisma/client";
+
+// icons
 import {
   Check,
   ChevronsUpDown,
   PlusCircle,
   Store as StoreIcon,
 } from "lucide-react";
-import type { Store } from "@prisma/client";
 
-import { useStoreModal } from "@/hooks/use-store-modal";
-import { cn } from "@/lib/utils";
+// components
 import {
   Popover,
   PopoverContent,
@@ -28,33 +29,49 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 
+// utilities
+import { cn } from "@/lib/utils";
+
+// hooks
+import { useStoreModal } from "@/hooks/use-store-modal";
+
+// popover trigger props
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
 >;
 
+// store switcher props
 type StoreSwitcherProps = PopoverTriggerProps & {
   items: Store[];
 };
 
+// store switcher
 export default function StoreSwitcher({
   className,
   items = [],
 }: StoreSwitcherProps) {
+  // use store modal
   const storeModal = useStoreModal();
+
+  // navigation
   const params = useParams();
   const router = useRouter();
 
+  // states
   const [open, setOpen] = useState(false);
 
+  // formatted store items
   const formattedItems = items.map((item) => ({
     label: item.name,
     value: item.id,
   }));
 
+  // find current store
   const currentStore = formattedItems.find(
     (item) => item.value === params.storeId
   );
 
+  // change store on select and redirect
   const onStoreSelect = (store: { label: string; value: string }) => {
     setOpen(false);
     router.push(`/${store.value}`);
@@ -63,6 +80,7 @@ export default function StoreSwitcher({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
+        {/* current store icon and label */}
         <Button
           variant="outline"
           size="sm"
@@ -78,14 +96,19 @@ export default function StoreSwitcher({
         </Button>
       </PopoverTrigger>
 
+      {/* select store */}
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
+            {/* search store */}
             <CommandInput
               placeholder="Search store..."
               title="Search store..."
             />
+            {/* no store found */}
             <CommandEmpty>No store found.</CommandEmpty>
+
+            {/* map over formatted store */}
             <CommandGroup heading="Stores">
               {formattedItems.map((store) => (
                 <CommandItem
@@ -94,6 +117,7 @@ export default function StoreSwitcher({
                   className="text-sm"
                   title={store.label}
                 >
+                  {/* store icon and label */}
                   <StoreIcon className="mr-2 h-4 w-4" />
                   {store.label}
                   <Check
@@ -109,7 +133,10 @@ export default function StoreSwitcher({
             </CommandGroup>
           </CommandList>
 
+          {/* command separator */}
           <CommandSeparator />
+
+          {/* create store btn */}
           <CommandList>
             <CommandGroup>
               <CommandItem

@@ -7,9 +7,11 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Modal } from "@/components/ui/modal";
-
+// hooks
 import { useStoreModal } from "@/hooks/use-store-modal";
+
+// components
+import { Modal } from "@/components/ui/modal";
 import {
   Form,
   FormControl,
@@ -21,14 +23,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+// store modal form zod schema
 const formSchema = z.object({
   name: z.string().min(1, "Required"),
 });
 
+// store modal
 export const StoreModal = () => {
+  // use store modal
   const storeModal = useStoreModal();
+
+  // states
   const [loading, setLoading] = useState(false);
 
+  // store modal form data
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,17 +44,23 @@ export const StoreModal = () => {
     },
   });
 
+  // on form submit
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // show loading
       setLoading(true);
 
+      // get response from api
       const response: AxiosResponse = await axios.post("/api/stores", values);
 
+      // update location and redirect
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
+      // show error message
       toast.error("Something went wrong.");
       throw new Error("Something went wrong.");
     } finally {
+      // hide loader
       setLoading(false);
     }
   };
@@ -60,8 +74,10 @@ export const StoreModal = () => {
     >
       <div>
         <div className="space-y-4 py-2 pb-4">
+          {/* create store form */}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
+              {/* store name */}
               <FormField
                 control={form.control}
                 name="name"
@@ -80,6 +96,7 @@ export const StoreModal = () => {
                 )}
               />
 
+              {/* cancel */}
               <div className="pt-6 space-x-2 flex items-center justify-end w-full">
                 <Button
                   variant="outline"
@@ -88,6 +105,8 @@ export const StoreModal = () => {
                 >
                   Cancel
                 </Button>
+
+                {/* continue */}
                 <Button type="submit" disabled={loading}>
                   Continue
                 </Button>

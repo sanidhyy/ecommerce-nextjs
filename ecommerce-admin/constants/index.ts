@@ -3,8 +3,10 @@
 
 import type { Metadata } from "next";
 
+// site name
 export const SITE_NAME = "Store" as const;
 
+// sidebar links
 export const SIDEBAR_LINKS = [
   {
     to: "",
@@ -40,11 +42,13 @@ export const SIDEBAR_LINKS = [
   },
 ] as const;
 
+// extra links
 export const EXTRA_LINKS = {
   github: "https://github.com/sanidhyy",
   source_code: "https://github.com/sanidhyy/ecommerce-nextjs",
 } as const;
 
+// site data
 export const SITE_DATA: Metadata = {
   title: SITE_NAME,
   description: `A Next.js 14 E-Commerce ${SITE_NAME} Dashboard & CMS Application.`,
