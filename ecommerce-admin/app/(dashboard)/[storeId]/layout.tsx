@@ -7,6 +7,8 @@ import Navbar from "@/components/navbar";
 
 // utilities
 import prismadb from "@/lib/prismadb";
+
+// utilities
 import { generateMetadata } from "@/lib/utils";
 
 // export page metadata

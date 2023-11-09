@@ -4,6 +4,8 @@ import { auth } from "@clerk/nextjs";
 
 // utilities
 import prismadb from "@/lib/prismadb";
+
+// utilities
 import { generateMetadata } from "@/lib/utils";
 
 // export page metadata

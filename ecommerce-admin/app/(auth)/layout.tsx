@@ -1,3 +1,4 @@
+// utilities
 import { generateMetadata } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+// utilities
 import { generateMetadata } from "@/lib/utils";
 
 export const metadata: Metadata = generateMetadata("Settings");
