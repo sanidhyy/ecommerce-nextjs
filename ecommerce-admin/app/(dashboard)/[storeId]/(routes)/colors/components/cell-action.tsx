@@ -93,6 +93,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             Copy Id
           </DropdownMenuItem>
 
+          {/* update color data */}
           <DropdownMenuItem
             onClick={() => router.push(`/${params.storeId}/colors/${data.id}`)}
           >

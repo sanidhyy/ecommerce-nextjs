@@ -2,8 +2,11 @@
 
 import { toast } from "react-hot-toast";
 import { ColumnDef } from "@tanstack/react-table";
+
+// icons
 import { CheckCircle, XCircle } from "lucide-react";
 
+// components
 import {
   Tooltip,
   TooltipContent,
@@ -11,8 +14,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CellAction } from "./cell-action";
-import { MouseEventHandler } from "react";
 
+// product column
 export type ProductColumn = {
   id: string;
   name: string;
@@ -25,6 +28,7 @@ export type ProductColumn = {
   createdAt: string;
 };
 
+// columns
 export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: "name",
@@ -84,8 +88,10 @@ export const columns: ColumnDef<ProductColumn>[] = [
 
       return (
         <div className="flex items-center gap-x-2">
+          {/* color name */}
           {colorName}
           <TooltipProvider>
+            {/* tootip to show hex code on hover */}
             <Tooltip>
               <TooltipTrigger>
                 <div
@@ -94,6 +100,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
                   onClick={() => onCopy(colorValue)}
                 />
               </TooltipTrigger>
+              {/* color hex code */}
               <TooltipContent>
                 <p>{colorValue}</p>
               </TooltipContent>
