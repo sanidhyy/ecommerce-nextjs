@@ -1,12 +1,16 @@
 import { format } from "date-fns";
 
+// utilities
 import prismadb from "@/lib/prismadb";
 import { formatter } from "@/lib/utils";
 
+// components
 import { OrderClient } from "./components/order-client";
 import { OrderColumn } from "./components/columns";
 
+// orders page
 const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
+  // fetch orders data (including product data, order by createdAt desc)
   const orders = await prismadb.order.findMany({
     where: {
       storeId: params.storeId,
@@ -23,6 +27,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
+  // formatted orders
   const formattedOrders: OrderColumn[] = orders.map((item) => ({
     id: item.id,
     phone: item.phone,
@@ -41,6 +46,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
 
   return (
     <div className="flex-col">
+      {/* order client */}
       <div className="flex-1 space-y-4 p-8 pt-6">
         <OrderClient data={formattedOrders} />
       </div>

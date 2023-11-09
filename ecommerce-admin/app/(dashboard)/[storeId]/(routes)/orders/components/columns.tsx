@@ -1,8 +1,11 @@
 "use client";
 
-import { CheckCircle, XCircle } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
 
+// icons
+import { CheckCircle, XCircle } from "lucide-react";
+
+// order column
 export type OrderColumn = {
   id: string;
   phone: string;
@@ -13,6 +16,7 @@ export type OrderColumn = {
   createdAt: string;
 };
 
+// columns
 export const columns: ColumnDef<OrderColumn>[] = [
   {
     accessorKey: "products",
