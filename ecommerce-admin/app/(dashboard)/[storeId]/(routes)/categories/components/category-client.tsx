@@ -50,6 +50,7 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
 
       {/* heading - api */}
       <Heading title="API" description="API calls for categories" />
+
       {/* horizontal separator */}
       <Separator />
 

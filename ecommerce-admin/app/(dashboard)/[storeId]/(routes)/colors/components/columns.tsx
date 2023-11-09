@@ -1,8 +1,11 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+
+// components
 import { CellAction } from "./cell-action";
 
+// color column
 export type ColorColumn = {
   id: string;
   name: string;
@@ -10,6 +13,7 @@ export type ColorColumn = {
   createdAt: string;
 };
 
+// columns
 export const columns: ColumnDef<ColorColumn>[] = [
   {
     accessorKey: "name",
@@ -24,6 +28,7 @@ export const columns: ColumnDef<ColorColumn>[] = [
         <div
           className="h-6 w-6 rounded-full border"
           style={{ backgroundColor: row.original.value }}
+          title={row.original.name}
         />
       </div>
     ),
