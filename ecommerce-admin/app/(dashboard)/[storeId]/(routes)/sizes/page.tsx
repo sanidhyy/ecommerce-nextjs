@@ -1,10 +1,15 @@
-import prismadb from "@/lib/prismadb";
 import { format } from "date-fns";
 
-import { SizesClient } from "./components/size-client";
+// utilities
+import prismadb from "@/lib/prismadb";
+
+// components
+import { SizeClient } from "./components/size-client";
 import { SizeColumn } from "./components/columns";
 
+// sizes page
 const SizesPage = async ({ params }: { params: { storeId: string } }) => {
+  // fetch sizes data (order by createdAt desc)
   const sizes = await prismadb.size.findMany({
     where: {
       storeId: params.storeId,
@@ -14,6 +19,7 @@ const SizesPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
+  // formatted sizes (changed createdAt date structure)
   const formattedSizes: SizeColumn[] = sizes.map((item) => ({
     id: item.id,
     name: item.name,
@@ -24,7 +30,8 @@ const SizesPage = async ({ params }: { params: { storeId: string } }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <SizesClient data={formattedSizes} />
+        {/* size client */}
+        <SizeClient data={formattedSizes} />
       </div>
     </div>
   );

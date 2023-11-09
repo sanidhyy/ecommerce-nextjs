@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 // icons
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
