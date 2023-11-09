@@ -1,28 +1,35 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
+// utilities
 import { stripe } from "@/lib/stripe";
 import prismadb from "@/lib/prismadb";
 
+// headers
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+// header options
 export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders });
 }
 
+// post request
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
 ) {
+  // get product id
   const { productIds } = await req.json();
 
+  // product id(s) are required
   if (!productIds || productIds.length == 0)
-    return new NextResponse("Product ids are required", { status: 400 });
+    return new NextResponse("Product id(s) are required", { status: 400 });
 
+  // fetch products data
   const products = await prismadb.product.findMany({
     where: {
       id: {
@@ -31,8 +38,10 @@ export async function POST(
     },
   });
 
+  // line items
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
+  // update line items
   products.forEach((product) => {
     line_items.push({
       quantity: 1,
@@ -46,6 +55,7 @@ export async function POST(
     });
   });
 
+  // create order
   const order = await prismadb.order.create({
     data: {
       storeId: params.storeId,
@@ -62,6 +72,7 @@ export async function POST(
     },
   });
 
+  // create stripe session
   const session = await stripe.checkout.sessions.create({
     line_items,
     mode: "payment",
@@ -76,10 +87,12 @@ export async function POST(
     },
   });
 
+  // return response of status 200
   return NextResponse.json(
     { url: session.url },
     {
       headers: corsHeaders,
+      status: 200,
     }
   );
 }
