@@ -1,14 +1,18 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+
+// components
 import { CellAction } from "./cell-action";
 
+// billboard column
 export type BillBoardColumn = {
   id: string;
   label: string;
   createdAt: string;
 };
 
+// columns
 export const columns: ColumnDef<BillBoardColumn>[] = [
   {
     accessorKey: "label",
