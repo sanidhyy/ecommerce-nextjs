@@ -1,23 +1,31 @@
 "use client";
 
+// hooks
 import usePreviewModal from "@/hooks/use-preview-modal";
+
+// components
 import Modal from "@/components/ui/modal";
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 
+// preview modal
 const PreviewModal = () => {
+  // states
   const previewModal = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
 
+  // show nothing if product doesn't exists (usually done to prevent hydration error and window buffer)
   if (!product) return null;
 
   return (
     <Modal open={previewModal.isOpen} onClose={previewModal.onClose}>
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+        {/* product gallery images */}
         <div className="sm:col-span-4 lg:col-span-5">
           <Gallery images={product.images} />
         </div>
 
+        {/* product info */}
         <div className="sm:col-span-8 lg:col-span-7">
           <Info data={product} />
         </div>

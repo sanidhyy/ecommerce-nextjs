@@ -3,26 +3,37 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+// icons
 import { Github, ShoppingBag } from "lucide-react";
 
+// hooks
 import useCart from "@/hooks/use-cart";
+
+// components
 import Button from "@/components/ui/button";
+
+// constants
 import { EXTRA_LINKS } from "@/constants";
 
+// navbar actions
 const NavbarActions = () => {
+  // states
   const router = useRouter();
+  const cart = useCart();
   const [isMounted, setIsMounted] = useState(false);
 
+  // set mount
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const cart = useCart();
-
+  // prevent hydration error
   if (!isMounted) return null;
 
   return (
     <div className="ml-auto flex items-center gap-x-4">
+      {/* github source code */}
       <Link
         href={EXTRA_LINKS.source_code}
         target="_blank"
@@ -33,6 +44,7 @@ const NavbarActions = () => {
         <Github size={20} color="white" />
       </Link>
 
+      {/* shopping cart */}
       <Button
         onClick={() => router.push("/cart")}
         className="flex items-center rounded-full bg-black px-4 py-2"

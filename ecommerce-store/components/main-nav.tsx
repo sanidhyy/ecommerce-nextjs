@@ -3,15 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// utilities
 import { cn } from "@/lib/utils";
+
+// types
 import { Category } from "@/types";
 
+// main nav props
 type MainNavProps = {
   data: Category[];
 };
 
+// main nav
 const MainNav: React.FC<MainNavProps> = ({ data }) => {
+  // navigation
   const pathname = usePathname();
+
+  // routes
   const routes = data.map((route) => ({
     href: `/category/${route.id}`,
     label: route.name,
@@ -20,6 +28,7 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
 
   return (
     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
+      {/* map over each route */}
       {routes.map((route) => (
         <Link
           key={route.label}
