@@ -1,7 +1,9 @@
 import { create } from "zustand";
 
+// types
 import { Product } from "@/types";
 
+// preview modal store
 type PreviewModalStore = {
   isOpen: boolean;
   data?: Product;
@@ -9,6 +11,7 @@ type PreviewModalStore = {
   onClose: () => void;
 };
 
+// use preview modal hook
 const usePreviewModal = create<PreviewModalStore>((set) => ({
   isOpen: false,
   data: undefined,
