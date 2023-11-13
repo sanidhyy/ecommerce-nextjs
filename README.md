@@ -231,11 +231,11 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api/<your-api-key>
 
 ### E-Commerce Store
 
-[![Stats for E-Commerce Store](/.github/images/stats-store.svg "Stats for this App")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for E-Commerce Store")
+[![Stats for E-Commerce Store](/.github/images/stats-store.svg "Stats for E-Commerce Store")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for E-Commerce Store")
 
 ### E-Commerce Admin
 
-[![Stats for E-Commerce Admin](/.github/images/stats-admin.svg "Stats for E-Commerce Admin")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for this App")
+[![Stats for E-Commerce Admin](/.github/images/stats-admin.svg "Stats for E-Commerce Admin")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for E-Commerce Admin")
 
 ## :raised_hands: Contribute
 
