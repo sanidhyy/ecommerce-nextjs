@@ -1,8 +1,8 @@
 <a name="readme-top"></a>
 
-# A Next.js 14 ECommerce App and Admin Dashboard/CMS
+# A Next.js 14 E-Commerce App and Admin Dashboard/CMS
 
-![A Next.js 14 ECommerce App and Admin Dashboard/CMS](/.github/images/img_main.png "A Next.js 14 ECommerce App and Admin Dashboard/CMS")
+![A Next.js 14 E-Commerce App and Admin Dashboard/CMS](/.github/images/img_main.png "A Next.js 14 E-Commerce App and Admin Dashboard/CMS")
 
 [![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy "Ask Me Anything!")
 [![GitHub license](https://flat.badgen.net/github/license/sanidhyy/ecommerce-nextjs?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy/ecommerce-nextjs/blob/main/LICENSE "GitHub license")
@@ -149,17 +149,23 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="xxxxxxxxxx"
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
 ```
 
-5. **Clerk Keys**:
+5. Contents of `ecommerce-store/.env.local`:
+
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:3000/api/<your-api-key>
+```
+
+6. **Clerk Keys**:
    - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` are provided by Clerk. You need to sign up for an account on Clerk (https://www.clerk.dev/), log in, and access these keys in your account settings.
 
 ![Copy Clerk Secret and Publishable Key](/.github/images/step_clerk.png "Copy Clerk Secret and Publishable Key")
 
-6. **Stripe Secret Key**:
+7. **Stripe Secret Key**:
    - `STRIPE_API_KEY` is provided by Stripe in order to setup online payments. You need to sign up for an account on Stripe (https://stripe.com/), log in, and access these keys in your account dashboard.
 
 ![Copy Stripe Secret Key](/.github/images/step_stripe.png "Copy Stripe Secret Key")
 
-7. **Stripe Webhook Secret**:
+8. **Stripe Webhook Secret**:
 
    - `STRIPE_WEBHOOK_SECRET` is required for handling Stripe webhooks securely. Follow these steps to obtain the webhook secret:
      - Sign in to your Stripe account (https://dashboard.stripe.com/).
@@ -168,16 +174,17 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
      - Set up the endpoint details and select `checkout.session.completed` event.
      - After saving, you'll see the webhook signing secret. Copy this value to use as `STRIPE_WEBHOOK_SECRET`.
 
-8. **URLs for Clerk**:
+9. **URLs for Clerk**:
 
    - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL`, `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`, and `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` are endpoints or URLs related to your Clerk setup. You can configure these in your Clerk dashboard.
 
-9. **Prisma Database URL**:
-   - `DATABASE_URL` is the connection URL for your Aiven MySQL database. You will need to create a Aiven account (https://aiven.io/) or use an existing one. Obtain the connection URL from your Aiven dashboard.
+10. **Prisma Database URL**:
+
+- `DATABASE_URL` is the connection URL for your Aiven MySQL database. You will need to create a Aiven account (https://aiven.io/) or use an existing one. Obtain the connection URL from your Aiven dashboard.
 
 ![Copy Aiven MySQL Database Auth URL](/.github/images/step_aiven.png "Copy Aiven MySQL Database Auth URL")
 
-10. **Cloudinary Keys**:
+11. **Cloudinary Keys**:
 
     - **Cloud Name**:
       The `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` is associated with your Cloudinary account. To find your Cloud Name: - Log in to your Cloudinary account. - Navigate to the [Dashboard](https://cloudinary.com/console). - You will find your Cloud Name displayed on the Dashboard.
@@ -185,18 +192,22 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
     - **Upload Preset**:
       The `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` is used for unsigned uploads. To create an unsigned upload preset: - In your Cloudinary Dashboard, go to the [Settings](https://cloudinary.com/console/settings/upload). - Scroll down to the "Upload presets" section. - Click the "Add upload preset" button. - Configure the preset settings as needed (e.g., folder, tags). - Click the "Save" button. - Your new upload preset will be listed on the Upload Presets page. Copy the name of the preset.
 
+12. **Public API URL**:
+    - `NEXT_PUBLIC_API_URL` are endpoints or URLs related to your Admin APIs. You can configure/copy this from your Admin Dashboard Settings Panel.
+
 ### :books: Additional Resources
 
 - Clerk Documentation: https://www.clerk.dev/docs/
 - Stripe Documentation: https://stripe.com/docs/
 - Aiven Documentation: https://docs.aiven.io/
-- Uploadthing Documentation: https://docs.uploadthing.com/
+- Cloudinary Documentation: https://cloudinary.com/documentation
+- Prisma Documentation: https://www.prisma.io/docs
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
 ## :camera: Screenshots:
 
-### ECommerce Store
+### E-Commerce Store
 
 ![Create Threads](/.github/images/img_store1.png "Create Threads")
 
@@ -204,7 +215,7 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
 
 ![View Profile](/.github/images/img_store3.png "View Profile")
 
-### ECommerce Admin
+### E-Commerce Admin
 
 ![Create Threads](/.github/images/img_admin1.png "Create Threads")
 
@@ -218,13 +229,13 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
 
 ## :wrench: Stats
 
-### ECommerce Store
+### E-Commerce Store
 
-[![Stats for ECommerce Store](/.github/images/stats-store.svg "Stats for this App")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for ECommerce Store")
+[![Stats for E-Commerce Store](/.github/images/stats-store.svg "Stats for this App")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for E-Commerce Store")
 
-### ECommerce Admin
+### E-Commerce Admin
 
-[![Stats for ECommerce Admin](/.github/images/stats-admin.svg "Stats for ECommerce Admin")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for this App")
+[![Stats for E-Commerce Admin](/.github/images/stats-admin.svg "Stats for E-Commerce Admin")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for this App")
 
 ## :raised_hands: Contribute
 
