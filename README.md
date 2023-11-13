@@ -209,19 +209,19 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api/<your-api-key>
 
 ### E-Commerce Store
 
-![Create Threads](/.github/images/img_store1.png "Create Threads")
+![View Product Categories](/.github/images/img_store1.png "View Product Categories")
 
-![Create Communities](/.github/images/img_store2.png "Create Communities")
+![View Product Info](/.github/images/img_store2.png "View Product Info")
 
-![View Profile](/.github/images/img_store3.png "View Profile")
+![View Shopping Cart](/.github/images/img_store3.png "View Shopping Cart")
 
 ### E-Commerce Admin
 
-![Create Threads](/.github/images/img_admin1.png "Create Threads")
+![Create Store](/.github/images/img_admin1.png "Create Store")
 
-![Create Communities](/.github/images/img_admin2.png "Create Communities")
+![View Categories](/.github/images/img_admin2.png "View Categories")
 
-![View Profile](/.github/images/img_admin3.png "View Profile")
+![Create Product](/.github/images/img_admin3.png "Create Product")
 
 ## :gear: Tech Stack
 
