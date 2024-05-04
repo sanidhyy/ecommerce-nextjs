@@ -12,7 +12,7 @@ const HomePage = async () => {
   // get product(s) info from api
   const products = await getProducts({ isFeatured: true });
   // get billboard info from api
-  const billboard = await getBillboard("6d7eeeff-5712-4341-bce8-2ca8cd6125d5");
+  const billboard = await getBillboard(process.env.NEXT_PUBLIC_BILLBOARD_ID!);
 
   return (
     <Container>
