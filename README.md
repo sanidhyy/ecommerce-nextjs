@@ -153,6 +153,7 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="xxxxxxxxxxx"
 
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:3000/api/<your-api-key>
+NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
 ```
 
 6. **Clerk Keys**:
@@ -194,6 +195,12 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api/<your-api-key>
 
 12. **Public API URL**:
     - `NEXT_PUBLIC_API_URL` are endpoints or URLs related to your Admin APIs. You can configure/copy this from your Admin Dashboard Settings Panel.
+
+13. **Active Billboard Id**:
+	- `NEXT_PUBLIC_BILLBOARD_ID` is the id of billboard which you want to display on home page. You can copy this either from dashboard/billboards page or directly from database by running `npm run prisma:studio`
+
+14. Install required packages using `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
+15. Run both admin and store separately on ports 3000 and 3001 respectively.
 
 ### :books: Additional Resources
 
