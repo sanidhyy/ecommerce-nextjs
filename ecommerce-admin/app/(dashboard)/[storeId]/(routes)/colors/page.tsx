@@ -8,11 +8,17 @@ import { ColorClient } from "./components/color-client";
 import { ColorColumn } from "./components/columns";
 
 // colors page
-const ColorsPage = async ({ params }: { params: { storeId: string } }) => {
+const ColorsPage = async ({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) => {
+  const { storeId } = await params;
+
   // fetch colors data (order by createdAt desc)
   const colors = await prismadb.color.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     orderBy: {
       createdAt: "desc",

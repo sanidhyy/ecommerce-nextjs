@@ -7,9 +7,11 @@ import prismadb from "@/lib/prismadb";
 // patch request
 export async function PATCH(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Promise<{ storeId: string }> },
 ) {
   try {
+    const { storeId } = await params;
+
     // get user id
     const { userId } = auth();
     // extract json body from request
@@ -25,13 +27,13 @@ export async function PATCH(
     if (!name) return new NextResponse("Name is required", { status: 400 });
 
     // store id is required
-    if (!params.storeId)
+    if (!storeId)
       return new NextResponse("Store id is required", { status: 400 });
 
     // update store data
     const store = await prismadb.store.updateMany({
       where: {
-        id: params.storeId,
+        id: storeId,
         userId,
       },
       data: {
@@ -51,19 +53,20 @@ export async function PATCH(
 
 export async function DELETE(
   _req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Promise<{ storeId: string }> },
 ) {
   try {
+    const { storeId } = await params;
     const { userId } = auth();
 
     if (!userId) return new NextResponse("Unauthenticated", { status: 401 });
 
-    if (!params.storeId)
+    if (!storeId)
       return new NextResponse("Store id is required", { status: 400 });
 
     const store = await prismadb.store.deleteMany({
       where: {
-        id: params.storeId,
+        id: storeId,
         userId,
       },
     });

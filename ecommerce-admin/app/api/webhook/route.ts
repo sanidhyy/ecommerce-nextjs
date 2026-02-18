@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   // request body
   const body = await req.text();
   // request signature for verifying stripe payments
-  const signature = headers().get("Stripe-Signature") as string;
+  const signature = (await headers()).get("Stripe-Signature") as string;
 
   // stripe event (to check if transaction is completed)
   let event: Stripe.Event;
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      process.env.STRIPE_WEBHOOK_SECRET!,
     );
   } catch (error: any) {
     // unable to connect to stripe webhook

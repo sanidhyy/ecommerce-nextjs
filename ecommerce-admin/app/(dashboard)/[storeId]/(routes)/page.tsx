@@ -18,16 +18,18 @@ import { getGraphRevenue } from "@/actions/get-graph-revenue";
 
 // dashboard page props
 type DashboardPageProps = {
-  params: { storeId: string };
+  params: Promise<{ storeId: string }>;
 };
 
 // dashboard page
 const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
+  const { storeId } = await params;
+
   // fetch graph data
-  const totalRevenue = await getTotalRevenue(params.storeId);
-  const salesCount = await getSalesCount(params.storeId);
-  const stockCount = await getStockCount(params.storeId);
-  const graphRevenue = await getGraphRevenue(params.storeId);
+  const totalRevenue = await getTotalRevenue(storeId);
+  const salesCount = await getSalesCount(storeId);
+  const stockCount = await getStockCount(storeId);
+  const graphRevenue = await getGraphRevenue(storeId);
 
   return (
     <div className="flex-col">

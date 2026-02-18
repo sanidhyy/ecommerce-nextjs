@@ -8,11 +8,17 @@ import { ProductClient } from "./components/product-client";
 import { ProductColumn } from "./components/columns";
 
 // products page
-const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
+const ProductsPage = async ({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) => {
+  const { storeId } = await params;
+
   // fetch products data (including category, size, and color data, order by createdAt desc)
   const products = await prismadb.product.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     include: {
       category: true,

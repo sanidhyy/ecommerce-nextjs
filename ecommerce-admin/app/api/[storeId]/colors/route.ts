@@ -7,9 +7,11 @@ import prismadb from "@/lib/prismadb";
 // post request
 export async function POST(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Promise<{ storeId: string }> },
 ) {
   try {
+    const { storeId } = await params;
+
     // get user id
     const { userId } = auth();
     // get json data from request body
@@ -34,14 +36,14 @@ export async function POST(
     }
 
     // invalid store id
-    if (!params.storeId) {
+    if (!storeId) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
     // fetch store data
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: storeId,
         userId,
       },
     });
@@ -56,12 +58,12 @@ export async function POST(
       data: {
         name,
         value,
-        storeId: params.storeId,
+        storeId: storeId,
       },
     });
 
     // return response of status 200
-    return NextResponse.json(color, {status: 200});
+    return NextResponse.json(color, { status: 200 });
   } catch (error) {
     // show error message
     console.log("[COLORS_POST]", error);
@@ -73,23 +75,25 @@ export async function POST(
 // get request
 export async function GET(
   _req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Promise<{ storeId: string }> },
 ) {
   try {
+    const { storeId } = await params;
+
     // invalid store id
-    if (!params.storeId) {
+    if (!storeId) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
     // fetch colors data
     const colors = await prismadb.color.findMany({
       where: {
-        storeId: params.storeId,
+        storeId: storeId,
       },
     });
 
     // return response of status 200
-    return NextResponse.json(colors, {status: 200});
+    return NextResponse.json(colors, { status: 200 });
   } catch (error) {
     // show error message
     console.log("[COLORS_GET]", error);

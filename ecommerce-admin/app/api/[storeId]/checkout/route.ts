@@ -20,8 +20,10 @@ export async function OPTIONS() {
 // post request
 export async function POST(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: Promise<{ storeId: string }> },
 ) {
+  const { storeId } = await params;
+
   // get product id
   const { productIds } = await req.json();
 
@@ -58,7 +60,7 @@ export async function POST(
   // create order
   const order = await prismadb.order.create({
     data: {
-      storeId: params.storeId,
+      storeId: storeId,
       isPaid: false,
       orderItems: {
         create: productIds.map((productId: string) => ({
@@ -93,6 +95,6 @@ export async function POST(
     {
       headers: corsHeaders,
       status: 200,
-    }
+    },
   );
 }

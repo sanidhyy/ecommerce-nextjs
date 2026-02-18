@@ -8,11 +8,17 @@ import { CategoryClient } from "./components/category-client";
 import { CategoryColumn } from "./components/columns";
 
 // categories page
-const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
+const CategoriesPage = async ({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) => {
+  const { storeId } = await params;
+
   // fetch categories data (including billboard data, order by createdAt desc)
   const categories = await prismadb.category.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     include: {
       billboard: true,

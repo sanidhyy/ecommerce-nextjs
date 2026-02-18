@@ -9,11 +9,17 @@ import { OrderClient } from "./components/order-client";
 import { OrderColumn } from "./components/columns";
 
 // orders page
-const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
+const OrdersPage = async ({
+  params,
+}: {
+  params: Promise<{ storeId: string }>;
+}) => {
+  const { storeId } = await params;
+
   // fetch orders data (including product data, order by createdAt desc)
   const orders = await prismadb.order.findMany({
     where: {
-      storeId: params.storeId,
+      storeId: storeId,
     },
     include: {
       orderItems: {
@@ -38,7 +44,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     totalPrice: formatter.format(
       item.orderItems.reduce((total, item) => {
         return total + Number(item.product.price);
-      }, 0)
+      }, 0),
     ),
     isPaid: item.isPaid,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),

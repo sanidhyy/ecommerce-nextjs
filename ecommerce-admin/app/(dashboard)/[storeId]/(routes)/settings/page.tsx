@@ -9,13 +9,15 @@ import SettingsForm from "./components/settings-form";
 
 // setttings page props
 type SettingsPageProps = {
-  params: {
+  params: Promise<{
     storeId: string;
-  };
+  }>;
 };
 
 // settings page
 const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
+  const { storeId } = await params;
+
   // get user id
   const { userId } = auth();
 
@@ -25,7 +27,7 @@ const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
   // fetch user's store data
   const store = await prismadb.store.findFirst({
     where: {
-      id: params.storeId,
+      id: storeId,
       userId,
     },
   });
