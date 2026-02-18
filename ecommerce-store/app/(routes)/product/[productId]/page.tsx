@@ -10,15 +10,17 @@ import Container from "@/components/ui/container";
 
 // product page props
 type ProductPageProps = {
-  params: {
+  params: Promise<{
     productId: string;
-  };
+  }>;
 };
 
 // product page
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
+  const { productId } = await params;
+
   // get product info
-  const product = await getProduct(params.productId);
+  const product = await getProduct(productId);
   // find suggest products from products list
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,

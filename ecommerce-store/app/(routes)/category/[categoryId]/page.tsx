@@ -14,13 +14,13 @@ import MobileFilters from "./components/mobile-filters";
 
 // category page props
 type CategoryPageProps = {
-  params: {
+  params: Promise<{
     categoryId: string;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     colorId: string;
     sizeId: string;
-  };
+  }>;
 };
 
 // category page
@@ -28,11 +28,14 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   params,
   searchParams,
 }) => {
+  const { categoryId } = await params;
+  const { colorId, sizeId } = await searchParams;
+
   // fetch product info from api
   const products = await getProducts({
-    categoryId: params.categoryId,
-    colorId: searchParams.colorId,
-    sizeId: searchParams.sizeId,
+    categoryId: categoryId,
+    colorId: colorId,
+    sizeId: sizeId,
   });
 
   // fetch sizes from api
@@ -40,7 +43,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   // fetch colors from api
   const colors = await getColors();
   // fetch category from api
-  const category = await getCategory(params.categoryId);
+  const category = await getCategory(categoryId);
 
   return (
     <div className="bg-white">
