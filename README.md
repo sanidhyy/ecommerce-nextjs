@@ -43,6 +43,8 @@
 
 Here is the folder structure of this app.
 
+<!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 ecommerce-nextjs/
   |- ecommerce-admin/
@@ -122,6 +124,8 @@ ecommerce-nextjs/
     |-- types.ts
 ```
 
+<!--- FOLDER_STRUCTURE_END --->
+
 <br />
 
 ## :toolbox: Getting Started
@@ -167,7 +171,6 @@ NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
 ![Copy Stripe Secret Key](/.github/images/step_stripe.png "Copy Stripe Secret Key")
 
 8. **Stripe Webhook Secret**:
-
    - `STRIPE_WEBHOOK_SECRET` is required for handling Stripe webhooks securely. Follow these steps to obtain the webhook secret:
      - Sign in to your Stripe account (https://dashboard.stripe.com/).
      - In the Dashboard, go to "Developers" > "Webhooks".
@@ -176,7 +179,6 @@ NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
      - After saving, you'll see the webhook signing secret. Copy this value to use as `STRIPE_WEBHOOK_SECRET`.
 
 9. **URLs for Clerk**:
-
    - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL`, `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`, and `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` are endpoints or URLs related to your Clerk setup. You can configure these in your Clerk dashboard.
 
 10. **Prisma Database URL**:
@@ -186,7 +188,6 @@ NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
 ![Copy Aiven MySQL Database Auth URL](/.github/images/step_aiven.png "Copy Aiven MySQL Database Auth URL")
 
 11. **Cloudinary Keys**:
-
     - **Cloud Name**:
       The `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` is associated with your Cloudinary account. To find your Cloud Name: - Log in to your Cloudinary account. - Navigate to the [Dashboard](https://cloudinary.com/console). - You will find your Cloud Name displayed on the Dashboard.
 
@@ -197,18 +198,10 @@ NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
     - `NEXT_PUBLIC_API_URL` are endpoints or URLs related to your Admin APIs. You can configure/copy this from your Admin Dashboard Settings Panel.
 
 13. **Active Billboard Id**:
-	- `NEXT_PUBLIC_BILLBOARD_ID` is the id of billboard which you want to display on home page. You can copy this either from dashboard/billboards page or directly from database by running `npm run prisma:studio`
+    - `NEXT_PUBLIC_BILLBOARD_ID` is the id of billboard which you want to display on home page. You can copy this either from dashboard/billboards page or directly from database by running `npm run prisma:studio`
 
 14. Install required packages using `npm install --legacy-peer-deps` or `yarn install --legacy-peer-deps`.
 15. Run both admin and store separately on ports 3000 and 3001 respectively.
-
-### :books: Additional Resources
-
-- Clerk Documentation: https://www.clerk.dev/docs/
-- Stripe Documentation: https://stripe.com/docs/
-- Aiven Documentation: https://docs.aiven.io/
-- Cloudinary Documentation: https://cloudinary.com/documentation
-- Prisma Documentation: https://www.prisma.io/docs
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
@@ -253,6 +246,7 @@ You might encounter some bugs while using this app. You are more than welcome to
 Useful resources and libraries that are used in My Portfolio
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
+<!--- DEPENDENCIES_START --->
 - [Clerk](https://clerk.com/ "Clerk")
 - [ShadCN UI](https://shadcn.com/ "ShadCN UI")
 - [CLSX](https://www.npmjs.com/package/clsx "CLSX")
@@ -266,6 +260,7 @@ Useful resources and libraries that are used in My Portfolio
 - [Prettier](https://prettier.io/ "Prettier")
 - [ESLint](https://eslint.org/ "ESLint")
 - [Next PWA](https://github.com/shadowwalker/next-pwa#readme "Next PWA")
+<!--- DEPENDENCIES_END --->
 
 ## :coffee: Buy Me a Coffee
 

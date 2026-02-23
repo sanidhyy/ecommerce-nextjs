@@ -1,0 +1,157 @@
+name: Update README Dependencies and Structure
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+
+      - name: Update README.md
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          // --- 1. Dynamic Dependency Generation ---
+          let depMarkdown = '\n';
+
+          function generateDepsForProject(pkgPath, projectName) {
+            if (!fs.existsSync(pkgPath)) return;
+            const pkg = require('./' + pkgPath);
+            const deps = { ...(pkg.dependencies || {}), ...(pkg.devDependencies || {}) };
+            const sortedDeps = Object.keys(deps).sort();
+            if (sortedDeps.length === 0) return;
+            
+            depMarkdown += \`### \${projectName}\\n\`;
+            for (const dep of sortedDeps) {
+              depMarkdown += \`- [\${dep}](https://www.npmjs.com/package/\${dep}): \${deps[dep]}\\n\`;
+            }
+            depMarkdown += '\\n';
+          }
+
+          // A. Check root package.json
+          if (fs.existsSync('package.json')) {
+            const pkg = require('./package.json');
+            generateDepsForProject('package.json', pkg.name || 'Root Project');
+          }
+
+          // B. Check subdirectories for package.json
+          const rootItems = fs.readdirSync('.', { withFileTypes: true });
+          for (const item of rootItems) {
+            if (item.isDirectory() && !['.git', 'node_modules', '.next', '.github', '.vscode'].includes(item.name)) {
+              const subPkgPath = path.join(item.name, 'package.json');
+              if (fs.existsSync(subPkgPath)) {
+                const subPkg = require('./' + subPkgPath);
+                generateDepsForProject(subPkgPath, subPkg.name || item.name);
+              }
+            }
+          }
+
+          // --- 2. Generate Folder Structure ---
+          const ignoreFolders = ['.git', '.next', 'node_modules', '.github', '.vscode'];
+          const ignoreFiles = ['LICENSE'];
+          const noExpandFolders = ['public', 'migrations', 'assets'];
+
+          function getStructure(dir, depth = 0) {
+            let structure = '';
+            let items = fs.readdirSync(dir, { withFileTypes: true });
+
+            // Filter out ignored items
+            items = items.filter(item => {
+              if (item.isDirectory() && ignoreFolders.includes(item.name)) return false;
+              if (item.isFile() && ignoreFiles.includes(item.name)) return false;
+              if (item.isFile() && item.name.endsWith('.md')) return false;
+              return true;
+            });
+
+            // Dynamically inject .env into whichever folder actually contains .env.example
+            if (fs.existsSync(path.join(dir, '.env.example'))) {
+              items.push({
+                name: '.env/.env.local',
+                isDirectory: () => false,
+                isFile: () => true
+              });
+            }
+
+            // Sort: Directories first, then files
+            items.sort((a, b) => {
+              if (a.isDirectory() === b.isDirectory()) return a.name.localeCompare(b.name);
+              return a.isDirectory() ? -1 : 1;
+            });
+
+            items.forEach((item) => {
+              const prefix = '  '.repeat(depth + 1) + '|' + '-'.repeat(depth + 1) + ' ';
+              
+              if (item.isDirectory()) {
+                structure += \`\${prefix}\${item.name}/\\n\`;
+                
+                // Smart Recursion: 
+                // - Always expand root level (depth 0)
+                // - Expand if we are inside a project folder (contains package.json)
+                // - Expand if the folder itself is 'src' or 'app'
+                const isProjectRoot = fs.existsSync(path.join(dir, 'package.json')) && depth === 1;
+                const isSrcOrApp = ['src', 'app'].includes(item.name);
+                
+                if ((depth === 0 || isProjectRoot || isSrcOrApp) && !noExpandFolders.includes(item.name)) {
+                  structure += getStructure(path.join(dir, item.name), depth + 1);
+                }
+              } else {
+                structure += \`\${prefix}\${item.name}\\n\`;
+              }
+            });
+            return structure;
+          }
+
+          // Get the repository name for the top of the tree
+          let repoName = 'project-root';
+          if (fs.existsSync('package.json')) {
+             repoName = require('./package.json').name || repoName;
+          } else {
+             repoName = path.basename(process.cwd());
+          }
+
+          const folderMarkdown = '\\n\`\`\`bash\\n' + repoName + '/\\n' + getStructure('.') + '\`\`\`\\n';
+
+          // --- 3. Replace in README ---
+          const readmePath = './README.md';
+          if (fs.existsSync(readmePath)) {
+            let readme = fs.readFileSync(readmePath, 'utf8');
+
+            const depRegex = new RegExp('<!--- DEPENDENCIES_START --->[\\\\s\\\\S]*?<!--- DEPENDENCIES_END --->');
+            readme = readme.replace(depRegex, '<!--- DEPENDENCIES_START --->' + depMarkdown + '<!--- DEPENDENCIES_END --->');
+
+            const folderRegex = new RegExp('<!--- FOLDER_STRUCTURE_START --->[\\\\s\\\\S]*?<!--- FOLDER_STRUCTURE_END --->');
+            if (folderRegex.test(readme)) {
+               readme = readme.replace(folderRegex, '<!--- FOLDER_STRUCTURE_START --->' + folderMarkdown + '<!--- FOLDER_STRUCTURE_END --->');
+            } else {
+               console.log('Warning: FOLDER_STRUCTURE markers not found in README.md');
+            }
+
+            fs.writeFileSync(readmePath, readme);
+          }
+          "
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: update dependencies and folder structure in README" || echo "No changes to commit"
+          git push
