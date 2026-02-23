@@ -44,86 +44,116 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 ecommerce-nextjs/
   |- ecommerce-admin/
     |-- actions/
+      |--- get-graph-revenue.ts
+      |--- get-sales-count.ts
+      |--- get-stock-count.ts
+      |--- get-total-revenue.ts
     |-- app/
-        |--- (auth)/routes/
-            |---- sign-in/
-            |---- sign-up/
-        |--- (dashboard)/[storeId]/(routes)/
-            |---- billboards/
-            |---- categories/
-            |---- colors/
-            |---- orders/
-            |---- products/
-            |---- settings/
-            |---- sizes/
-        |--- api/
-            |---- [storeId]/
-                |----- billboards/
-                |----- categories/
-                |----- checkout/
-                |----- colors/
-                |----- products/
-                |----- sizes/
-            |---- stores/[storeId]/
-            |---- webhook/
-        |--- favicon.ico
-        |--- globals.css
+      |--- (auth)/
+      |--- (dashboard)/
+      |--- (root)/
+      |--- api/
+      |--- apple-icon.png
+      |--- favicon.ico
+      |--- globals.css
+      |--- icon1.png
+      |--- icon2.png
+      |--- layout.tsx
+      |--- site.webmanifest
     |-- components/
-        |--- modals/
-        |--- ui/
+      |--- modals/
+      |--- ui/
+      |--- main-nav.tsx
+      |--- navbar.tsx
+      |--- overview.tsx
+      |--- store-switcher.tsx
+      |--- theme-toggle.tsx
     |-- constants/
+      |--- index.ts
     |-- hooks/
+      |--- use-origin.tsx
+      |--- use-store-modal.tsx
     |-- lib/
+      |--- prismadb.ts
+      |--- stripe.ts
+      |--- utils.ts
     |-- prisma/
+      |--- schema.prisma
     |-- providers/
+      |--- modal-provider.tsx
+      |--- theme-provider.tsx
+      |--- toast-provider.tsx
     |-- public/
-        |--- icons/
-        |--- site.webmanifest/
-    |-- .env.local
     |-- .env.example
+    |-- .env/.env.local
+    |-- .eslintrc.json
+    |-- .gitignore
+    |-- bun.lock
     |-- components.json
     |-- middleware.ts
     |-- next.config.js
-    |-- package-lock.json
     |-- package.json
     |-- postcss.config.js
     |-- tailwind.config.ts
     |-- tsconfig.json
+    |-- vercel.ts
   |- ecommerce-store/
     |-- actions/
+      |--- get-billboard.tsx
+      |--- get-categories.tsx
+      |--- get-category.tsx
+      |--- get-colors.tsx
+      |--- get-product.tsx
+      |--- get-products.tsx
+      |--- get-sizes.tsx
     |-- app/
-        |--- (routes)/
-            |---- cart/
-            |---- category/[categoryId]/
-            |---- product/[productId]/
-        |--- favicon.ico
-        |--- globals.css
+      |--- (routes)/
+      |--- apple-icon.png
+      |--- favicon.ico
+      |--- globals.css
+      |--- icon1.png
+      |--- icon2.png
+      |--- layout.tsx
+      |--- site.webmanifest
     |-- components/
-        |--- gallery/
-        |--- ui/
+      |--- gallery/
+      |--- ui/
+      |--- billboard.tsx
+      |--- footer.tsx
+      |--- info.tsx
+      |--- main-nav.tsx
+      |--- navbar-actions.tsx
+      |--- navbar.tsx
+      |--- preview-modal.tsx
+      |--- product-list.tsx
     |-- constants/
+      |--- index.ts
     |-- hooks/
+      |--- use-cart.ts
+      |--- use-preview-modal.ts
     |-- lib/
+      |--- utils.ts
     |-- providers/
+      |--- modal-provider.tsx
+      |--- toast-provider.tsx
     |-- public/
-        |--- icons/
-        |--- site.webmanifest/
-    |-- .env.local
     |-- .env.example
+    |-- .env/.env.local
+    |-- .eslintrc.json
+    |-- .gitignore
+    |-- bun.lock
     |-- next.config.js
-    |-- package-lock.json
     |-- package.json
     |-- postcss.config.js
     |-- tailwind.config.ts
     |-- tsconfig.json
     |-- types.ts
+    |-- vercel.ts
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -247,19 +277,78 @@ Useful resources and libraries that are used in My Portfolio
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
 <!--- DEPENDENCIES_START --->
-- [Clerk](https://clerk.com/ "Clerk")
-- [ShadCN UI](https://shadcn.com/ "ShadCN UI")
-- [CLSX](https://www.npmjs.com/package/clsx "CLSX")
-- [Cloudinary](https://cloudinary.com/ "Cloudinary")
-- [Date FNS](https://date-fns.org/ "Date FNS")
-- [Stripe](https://stripe.com/ "Stripe")
-- [Recharts](https://recharts.org/ "Recharts")
-- [ZOD](https://zod.dev/ "ZOD")
-- [React Hot Toast](https://react-hot-toast.com/ "React Hot Toast")
-- [Lucide Icons](https://lucide.dev/ "Lucide Icons")
-- [Prettier](https://prettier.io/ "Prettier")
-- [ESLint](https://eslint.org/ "ESLint")
-- [Next PWA](https://github.com/shadowwalker/next-pwa#readme "Next PWA")
+### ecommerce-admin
+- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.31.8
+- [@clerk/themes](https://www.npmjs.com/package/@clerk/themes): ^1.7.20
+- [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^3.10.0
+- [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^5.22.0
+- [@radix-ui/react-checkbox](https://www.npmjs.com/package/@radix-ui/react-checkbox): ^1.3.3
+- [@radix-ui/react-dialog](https://www.npmjs.com/package/@radix-ui/react-dialog): ^1.1.15
+- [@radix-ui/react-dropdown-menu](https://www.npmjs.com/package/@radix-ui/react-dropdown-menu): ^2.1.16
+- [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.1.8
+- [@radix-ui/react-popover](https://www.npmjs.com/package/@radix-ui/react-popover): ^1.1.15
+- [@radix-ui/react-select](https://www.npmjs.com/package/@radix-ui/react-select): ^2.2.6
+- [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.8
+- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
+- [@radix-ui/react-tooltip](https://www.npmjs.com/package/@radix-ui/react-tooltip): ^1.2.8
+- [@tanstack/react-table](https://www.npmjs.com/package/@tanstack/react-table): ^8.21.3
+- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
+- [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
+- [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.0.33
+- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.24
+- [axios](https://www.npmjs.com/package/axios): ^1.13.5
+- [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
+- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
+- [cmdk](https://www.npmjs.com/package/cmdk): ^0.2.1
+- [date-fns](https://www.npmjs.com/package/date-fns): ^4.1.0
+- [dotenv-cli](https://www.npmjs.com/package/dotenv-cli): ^11.0.0
+- [eslint](https://www.npmjs.com/package/eslint): ^8
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.1
+- [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
+- [next](https://www.npmjs.com/package/next): 15.5.10
+- [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^5.2.0
+- [next-pwa](https://www.npmjs.com/package/next-pwa): ^5.6.0
+- [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
+- [postcss](https://www.npmjs.com/package/postcss): ^8
+- [prisma](https://www.npmjs.com/package/prisma): ^5.5.2
+- [react](https://www.npmjs.com/package/react): ^19.2.4
+- [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.4
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.71.1
+- [react-hot-toast](https://www.npmjs.com/package/react-hot-toast): ^2.6.0
+- [recharts](https://www.npmjs.com/package/recharts): ^2.15.4
+- [stripe](https://www.npmjs.com/package/stripe): ^20.3.1
+- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.0.0
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
+- [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
+- [typescript](https://www.npmjs.com/package/typescript): ^5.9.3
+- [zod](https://www.npmjs.com/package/zod): ^4.3.6
+- [zustand](https://www.npmjs.com/package/zustand): ^5.0.11
+
+### ecommerce-store
+- [@headlessui/react](https://www.npmjs.com/package/@headlessui/react): ^2.2.9
+- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
+- [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
+- [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.0.33
+- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.24
+- [axios](https://www.npmjs.com/package/axios): ^1.13.5
+- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
+- [eslint](https://www.npmjs.com/package/eslint): ^8
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.1
+- [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
+- [next](https://www.npmjs.com/package/next): 15.5.10
+- [next-pwa](https://www.npmjs.com/package/next-pwa): ^5.6.0
+- [postcss](https://www.npmjs.com/package/postcss): ^8
+- [query-string](https://www.npmjs.com/package/query-string): ^9.3.1
+- [react](https://www.npmjs.com/package/react): ^19.2.4
+- [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.4
+- [react-hot-toast](https://www.npmjs.com/package/react-hot-toast): ^2.6.0
+- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.0.0
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
+- [typescript](https://www.npmjs.com/package/typescript): ^5.9.3
+- [zustand](https://www.npmjs.com/package/zustand): ^5.0.11
+
 <!--- DEPENDENCIES_END --->
 
 ## :coffee: Buy Me a Coffee
