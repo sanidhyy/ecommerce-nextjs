@@ -261,11 +261,11 @@ NEXT_PUBLIC_BILLBOARD_ID=<your-billboard-id>
 
 ### E-Commerce Store
 
-[![Stats for E-Commerce Store](/.github/images/stats-store.svg "Stats for E-Commerce Store")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for E-Commerce Store")
+[![Stats for E-Commerce Store](/.github/images/stats-store.svg "Stats for E-Commerce Store")](https://pagespeed.web.dev/analysis?url=https://e-commerce-nextjs-store.vercel.app/ "Stats for E-Commerce Store")
 
 ### E-Commerce Admin
 
-[![Stats for E-Commerce Admin](/.github/images/stats-admin.svg "Stats for E-Commerce Admin")](https://pagespeed-insights-svg.glitch.me/?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for E-Commerce Admin")
+[![Stats for E-Commerce Admin](/.github/images/stats-admin.svg "Stats for E-Commerce Admin")](https://pagespeed.web.dev/analysis?url=https://e-commerce-nextjs-admin.vercel.app/ "Stats for E-Commerce Admin")
 
 ## :raised_hands: Contribute
 
