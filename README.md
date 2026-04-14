@@ -306,7 +306,7 @@ Useful resources and libraries that are used in My Portfolio
 - [eslint](https://www.npmjs.com/package/eslint): ^8
 - [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.1
 - [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
-- [next](https://www.npmjs.com/package/next): 15.5.10
+- [next](https://www.npmjs.com/package/next): 15.5.15
 - [next-cloudinary](https://www.npmjs.com/package/next-cloudinary): ^5.2.0
 - [next-pwa](https://www.npmjs.com/package/next-pwa): ^5.6.0
 - [next-themes](https://www.npmjs.com/package/next-themes): ^0.4.6
