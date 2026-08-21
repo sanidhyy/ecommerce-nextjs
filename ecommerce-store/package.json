@@ -4,7 +4,7 @@
   "private": true,
   "author": {
     "name": "Sanidhya Kumar Verma",
-    "email": "sanidhya.verma12345@gmail.com",
+    "email": "sanidhyyy@gmail.com",
     "url": "https://github.com/sanidhyy"
   },
   "description": "A Next.js 14 E-Commerce Store Application.",
@@ -50,7 +50,7 @@
   "homepage": "https://github.com/sanidhyy/ecommerce-nextjs#readme",
   "bugs": {
     "url": "https://github.com/sanidhyy/ecommerce-nextjs/issues",
-    "email": "sanidhya.verma12345@gmail.com"
+    "email": "sanidhyyy@gmail.com"
   },
   "scripts": {
     "dev": "next dev",
