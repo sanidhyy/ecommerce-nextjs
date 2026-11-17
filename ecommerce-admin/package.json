@@ -96,7 +96,7 @@
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.71.1",
     "react-hot-toast": "^2.6.0",
-    "recharts": "^2.15.4",
+    "recharts": "^3.10.1",
     "stripe": "^20.3.1",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
