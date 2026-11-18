@@ -300,7 +300,7 @@ Useful resources and libraries that are used in My Portfolio
 - [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
 - [@radix-ui/react-tooltip](https://www.npmjs.com/package/@radix-ui/react-tooltip): ^1.2.8
 - [@tanstack/react-table](https://www.npmjs.com/package/@tanstack/react-table): ^8.21.3
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
+- [@types/node](https://www.npmjs.com/package/@types/node): ^26.6.6
 - [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
 - [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
 - [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.0.33
