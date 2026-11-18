@@ -335,7 +335,7 @@ Useful resources and libraries that are used in My Portfolio
 
 ### ecommerce-store
 - [@headlessui/react](https://www.npmjs.com/package/@headlessui/react): ^2.2.9
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
+- [@types/node](https://www.npmjs.com/package/@types/node): ^26.6.6
 - [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
 - [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
 - [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.0.33
