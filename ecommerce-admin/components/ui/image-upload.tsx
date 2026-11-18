@@ -65,7 +65,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       </div>
 
       <CldUploadWidget
-        onUpload={onUpload}
+        onUploadAdded={onUpload}
         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
       >
         {({ open }) => {
