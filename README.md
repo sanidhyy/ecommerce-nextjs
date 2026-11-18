@@ -308,7 +308,7 @@ Useful resources and libraries that are used in My Portfolio
 - [axios](https://www.npmjs.com/package/axios): ^1.13.5
 - [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
 - [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
-- [cmdk](https://www.npmjs.com/package/cmdk): ^0.2.1
+- [cmdk](https://www.npmjs.com/package/cmdk): ^1.1.1
 - [date-fns](https://www.npmjs.com/package/date-fns): ^4.1.0
 - [dotenv-cli](https://www.npmjs.com/package/dotenv-cli): ^11.0.0
 - [eslint](https://www.npmjs.com/package/eslint): ^8
