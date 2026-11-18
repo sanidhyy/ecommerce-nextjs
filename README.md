@@ -324,7 +324,7 @@ Useful resources and libraries that are used in My Portfolio
 - [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.4
 - [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.71.1
 - [react-hot-toast](https://www.npmjs.com/package/react-hot-toast): ^2.6.0
-- [recharts](https://www.npmjs.com/package/recharts): ^2.15.4
+- [recharts](https://www.npmjs.com/package/recharts): ^3.10.1
 - [stripe](https://www.npmjs.com/package/stripe): ^20.3.1
 - [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.0.0
 - [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
